@@ -1,0 +1,44 @@
+---
+title: "hw4"
+author: "cyber-atlas"
+date: "March 4, 2019"
+output: html_document
+---
+
+```{r}
+
+library(datasets)
+library(dplyr)
+
+?ChickWeight
+head(ChickWeight)
+
+#TODO ask and look into the data structure more
+
+class(ChickWeight)
+
+summary(ChickWeight)
+
+test <- ChickWeight %>% 
+  group_by(Diet) %>% 
+  summarize(
+    num_chicks = n(),
+    avg_weight = mean(weight, na.rm=TRUE),
+    sd_weight = sd(weight, na.rm = TRUE)
+  )
+
+print(test)
+```
+1
+
+```{r}
+
+
+```
+
+2 
+
+```{r}
+
+
+```
