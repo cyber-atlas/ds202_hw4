@@ -91,6 +91,33 @@ ggplot(tempDF, aes(x=(reorder (Diet, weightgain, FUN=median)), y=weightgain))+
 
 ```{r}
 
+ggplot(tempDF, aes(x=Chick, y=weightgain) )+
+  geom_point()
 
+temp2df <- tempDF %>% arrange(weightgain, desc(weightgain))
+
+print('Min')
+head(temp2df,1)
+print('Max')
+tail (temp2df,1)
+```
+
+
+6
+
+```{r}
+#we know 43 and 39 from problem 5
+leastmost <- complete %>% filter(Chick ==39 | Chick == 43)
+
+ggplot(leastmost, aes(x=Time, y=weight, color= Chick)) + geom_point()
+
+```
+
+
+
+7
+
+I find it interesting looking at how the time elasped affects the rate of weightgaim
+```{r}
 
 ```
