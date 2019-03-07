@@ -7,6 +7,7 @@ output: html_document
 
 ```{r}
 
+library(ggplot2)
 library(datasets)
 library(dplyr)
 
@@ -55,6 +56,40 @@ head(complete, 3)
 3
 
 ```{r}
+complete <- complete %>%
+  group_by(Chick) %>%
+  mutate(weightgain = weight - weight[Time == 0])
+
+head(complete, 3)
+
+```
+
+4
+
+```{r}
+
+tempDF <- complete %>% filter(Time == 21)
+ggplot(tempDF, aes(x=Diet, y=weightgain))+
+  geom_boxplot()
+
+```
+
+Diet 2 has the largest distribution of the amount of weight gained by the chickens. Diet 4 seems to have the least, with very few in the bottom IQR. Diet 3 seems to have the highest median and have the highest overall weightgain. Diet 4 can give you the best results with the least amount of risk, because the lowest weight gain was over 150. Diet 3 has a larger overall weight gain and a higher median weight gain, but there were enough chickens below 150 weighgain that they aren't outliers.
+
+```{r}
+
+#Used the reoder function to reorder by median
+#Added expand_limits to make sure 0 is in the axis range
+ggplot(tempDF, aes(x=(reorder (Diet, weightgain, FUN=median)), y=weightgain))+
+  geom_boxplot()+ 
+  expand_limits(y=0)
+
+```
+
+5
+
+```{r}
+
 
 
 ```
