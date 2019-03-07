@@ -100,19 +100,22 @@ print('Min')
 head(temp2df,1)
 print('Max')
 tail (temp2df,1)
-```
 
+```
+Min was chick 24 on diet 2, Max was chick 35 on diet 3. There is a range of 299 between the 2 weights. 
 
 6
 
 ```{r}
-#we know 43 and 39 from problem 5
-leastmost <- complete %>% filter(Chick ==39 | Chick == 43)
+#we know 35 and 24 from problem 5
+leastmost <- complete %>% filter(Chick == 35 | Chick == 24)
 
 ggplot(leastmost, aes(x=Time, y=weight, color= Chick)) + geom_point()
 
 ```
 
+
+They started growing at about the same rate, chick 39 was even slower for a while, but 24's weight started to level out between 3 and 5 days. 
 
 
 7
